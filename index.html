@@ -65,7 +65,8 @@
     text-align: center;
     border-radius: 11px;
     margin-bottom: 12px;
-    border: green solid 2px;}
+    /*border: green solid 2px;*/
+    }
   .profile-meta{display:flex;justify-content:space-between;gap:8px;align-items:center}
   .meta-left{font-size:14px;color:var(--muted)}
   .meta-right a{color:var(--muted);text-decoration:none;margin-left:8px}
@@ -241,6 +242,22 @@
           <a class="chip" href="https://www.linkedin.com/in/pitambar-jha/" target="_blank">LinkedIn</a>
           <a class="chip" href="https://github.com/forgotten-boi" target="_blank">GitHub</a>
         </div>
+        <div class="form">
+          <form id="contactForm" enctype="multipart/form-data">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="company">Company Name:</label><br>
+            <input type="text" id="company" name="company"><br><br>
+            <label for="contact">Contact:</label><br>
+            <input type="text" id="contact" name="contact"><br><br>
+            <label for="details">Details:</label><br>
+            <textarea id="details" name="details" rows="4" required></textarea><br><br>
+            <label for="attachment">Attachment:</label><br>
+            <input type="file" id="attachment" name="attachment"><br><br>
+            <button type="submit">Send</button>
+          </form>
+          <div id="formStatus" style="margin-top:10px;"></div>
+        </div>
       </section>
 
       <footer>© 2025 Pitambar Jha </footer>
@@ -248,6 +265,36 @@
   </div>
 
 <script>
+  // Contact form handler
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('contactForm');
+    if(form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = document.getElementById('name').value;
+        var company = document.getElementById('company').value;
+        var contact = document.getElementById('contact').value;
+        var details = document.getElementById('details').value;
+        var status = document.getElementById('formStatus');
+        var attachment = document.getElementById('attachment').files[0];
+
+        // Compose email body
+        var body =
+          'Name: ' + name + '%0D%0A' +
+          'Company Name: ' + company + '%0D%0A' +
+          'Contact: ' + contact + '%0D%0A' +
+          'Details: ' + details + '%0D%0A';
+
+        if (attachment) {
+          body += '\n[Attachment: ' + attachment.name + ' - cannot be sent via mailto, please attach manually]';
+        }
+
+        var mailto = 'mailto:pitambarzha@gmail.com?subject=Contact%20Form%20Submission&body=' + encodeURIComponent(body);
+        window.location.href = mailto;
+        status.innerHTML = 'Opening your email client. Please attach your file if needed.';
+      });
+    }
+  });
   // simple fade-in on load
   document.querySelectorAll('.fade-up').forEach((el,i)=> {
     el.style.animationDelay = (i*80)+'ms';
