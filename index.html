@@ -370,10 +370,10 @@
 
         // Compose email body
         var body =
-          'Name: ' + name + '%0D%0A' +
-          'Company Name: ' + company + '%0D%0A' +
-          'Contact: ' + contact + '%0D%0A' +
-          'Details: ' + details + '%0D%0A';
+          'Name: ' + name + '\n' +
+          'Company Name: ' + company + '\n' +
+          'Contact: ' + contact + '\n' +
+          'Details: ' + details + '\n';
 
         if (attachment) {
           body += '\n[Attachment: ' + attachment.name + ' - cannot be sent via mailto, please attach manually]';
