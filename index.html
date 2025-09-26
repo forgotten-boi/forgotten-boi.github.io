@@ -14,6 +14,82 @@
     --white: #f8fafc;
   }
   *{box-sizing:border-box}
+  .form {
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 6px 30px rgba(2,6,23,0.3);
+    padding: 32px 28px;
+       max-width: 80%;
+    margin: 32px auto 0 auto;
+  }
+  .form form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  form div{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  }
+  .form label {
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .form input[type="text"],
+  .form textarea,
+  .form input[type="file"] {
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 15px;
+    font-family: inherit;
+    margin-bottom: 2px;
+    outline: none;
+    transition: border 0.2s;
+  }
+  .form input[type="text"]:focus,
+  .form textarea:focus {
+    border: 1.5px solid var(--accent);
+  }
+  .form textarea {
+    resize: vertical;
+    min-height: 80px;
+    max-height: 220px;
+  }
+  .form button[type="submit"] {
+    background: linear-gradient(90deg,var(--accent),#7c3aed);
+    color: #00101a;
+    padding: 12px 0;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+    box-shadow: 0 4px 14px rgba(7,16,23,0.3);
+    transition: background 0.2s;
+  }
+  .form button[type="submit"]:hover {
+    background: linear-gradient(90deg,#7c3aed,var(--accent));
+  }
+  .form #formStatus {
+    color: var(--accent);
+    font-size: 15px;
+    margin-top: 8px;
+    min-height: 20px;
+  }
+  @media (max-width: 600px) {
+    .form {
+      padding: 18px 6vw;
+      max-width: 98vw;
+    }
+  }
   html,body{height:100%}
   body{
     margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
@@ -243,20 +319,30 @@
           <a class="chip" href="https://github.com/forgotten-boi" target="_blank">GitHub</a>
         </div>
         <div class="form">
-          <form id="contactForm" enctype="multipart/form-data">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-            <label for="company">Company Name:</label><br>
-            <input type="text" id="company" name="company"><br><br>
-            <label for="contact">Contact:</label><br>
-            <input type="text" id="contact" name="contact"><br><br>
-            <label for="details">Details:</label><br>
-            <textarea id="details" name="details" rows="4" required></textarea><br><br>
-            <label for="attachment">Attachment:</label><br>
-            <input type="file" id="attachment" name="attachment"><br><br>
+          <form id="contactForm" enctype="multipart/form-data" autocomplete="off">
+            <div>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div>
+              <label for="company">Company Name</label>
+              <input type="text" id="company" name="company" placeholder="Company (optional)">
+            </div>
+            <div>
+              <label for="contact">Contact</label>
+              <input type="text" id="contact" name="contact" required placeholder="Email or phone">
+            </div>
+            <div>
+              <label for="details">Details</label>
+              <textarea id="details" name="details" rows="4" required placeholder="How can I help you?"></textarea>
+            </div>
+            <div>
+              <label for="attachment">Attachment</label>
+              <input type="file" id="attachment" name="attachment">
+            </div>
             <button type="submit">Send</button>
           </form>
-          <div id="formStatus" style="margin-top:10px;"></div>
+          <div id="formStatus"></div>
         </div>
       </section>
 
