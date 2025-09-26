@@ -58,7 +58,14 @@
 
   /* right card profile */
   .profile-card{background:var(--card);padding:16px;border-radius:12px; border:1px solid rgba(255,255,255,0.03)}
-  .profile-card img{width:100%;height:220px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+ /* .profile-card img{width:100%;height:220px;object-fit:cover;border-radius:8px;margin-bottom:12px} */
+  .profile-card img{width: 100%;
+    height: 220px;
+    object-fit: contain;
+    text-align: center;
+    border-radius: 11px;
+    margin-bottom: 12px;
+    border: green solid 2px;}
   .profile-meta{display:flex;justify-content:space-between;gap:8px;align-items:center}
   .meta-left{font-size:14px;color:var(--muted)}
   .meta-right a{color:var(--muted);text-decoration:none;margin-left:8px}
@@ -130,7 +137,7 @@
         </div>
 
         <aside class="profile-card" aria-hidden>
-          <img src="pitambar-jha.jpg" alt="Office / work image">
+          <img src="./pitambar-jha.jpg" class='cv-dp' alt="Office / work image">
           <div class="profile-meta">
             <div class="meta-left">
               <div style="font-weight:700">Pitambar Jha</div>
